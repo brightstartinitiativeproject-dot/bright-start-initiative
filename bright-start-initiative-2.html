@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bright Start Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Jost', sans-serif; background: #F5F3EE; color: #2C2820; }
+.bsi-hero { background: #3D4A2E; padding: 3.5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+.bsi-star { position: absolute; background: #C8956C; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); opacity: 0.5; }
+.bsi-logo-letters { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 600; color: #F5F3EE; line-height: 1; letter-spacing: -2px; display: inline-block; }
+.bsi-logo-letters span { color: #C8956C; }
+.bsi-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; color: #F5F3EE; letter-spacing: 2px; margin-bottom: 4px; }
+.bsi-brand-sub { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; color: #C8956C; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 2rem; }
+.bsi-hero-headline { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400; font-style: italic; color: #F5F3EE; line-height: 1.4; max-width: 560px; margin: 0 auto 1rem; }
+.bsi-hero-sub { font-size: 14px; font-weight: 300; color: #C8BA9E; line-height: 1.7; max-width: 480px; margin: 0 auto 2rem; }
+.bsi-btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.bsi-btn-primary { background: #C8956C; color: #2C2820; border: none; padding: 12px 28px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border-radius: 2px; text-decoration: none; display: inline-block; }
+.bsi-btn-secondary { background: transparent; color: #F5F3EE; border: 1px solid #C8956C; padding: 12px 28px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border-radius: 2px; text-decoration: none; display: inline-block; }
+.bsi-divider { display: flex; align-items: center; gap: 12px; padding: 2.5rem 2rem; max-width: 680px; margin: 0 auto; }
+.bsi-divider-line { flex: 1; height: 1px; background: #C8956C; opacity: 0.3; }
+.bsi-divider-star { color: #C8956C; font-size: 14px; }
+.bsi-section { padding: 0 2rem 3rem; max-width: 680px; margin: 0 auto; }
+.bsi-section-label { font-size: 10px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #C8956C; margin-bottom: 0.75rem; }
+.bsi-section-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: #2C2820; margin-bottom: 1rem; line-height: 1.3; }
+.bsi-body { font-size: 15px; font-weight: 300; line-height: 1.8; color: #4A4238; margin-bottom: 1rem; }
+.bsi-workshops { background: #3D4A2E; padding: 2.5rem 2rem; }
+.bsi-workshops-inner { max-width: 680px; margin: 0 auto; }
+.bsi-workshops .bsi-section-label { color: #C8956C; }
+.bsi-workshops .bsi-section-title { color: #F5F3EE; }
+.bsi-workshop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: rgba(200,149,108,0.2); margin-top: 1.5rem; border: 1px solid rgba(200,149,108,0.2); }
+.bsi-workshop-item { background: #3D4A2E; padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 10px; }
+.bsi-workshop-dot { width: 4px; height: 4px; background: #C8956C; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+.bsi-workshop-text { font-size: 13px; font-weight: 300; color: #C8BA9E; line-height: 1.5; }
+.bsi-offer-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 1.5rem; }
+.bsi-offer-card { background: #fff; border: 1px solid rgba(61,74,46,0.15); border-radius: 2px; padding: 1.5rem; }
+.bsi-offer-card-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #3D4A2E; margin-bottom: 0.5rem; }
+.bsi-offer-card-desc { font-size: 13px; font-weight: 300; color: #4A4238; line-height: 1.7; }
+.bsi-about { background: #F0EDE6; padding: 2.5rem 2rem; }
+.bsi-about-inner { max-width: 680px; margin: 0 auto; display: flex; gap: 2rem; align-items: flex-start; }
+.bsi-about-photo { width: 80px; height: 80px; border-radius: 50%; background: #3D4A2E; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #C8956C; font-weight: 500; }
+.bsi-footer { background: #2C2820; padding: 2rem; text-align: center; }
+.bsi-footer-text { font-size: 12px; font-weight: 300; color: #888070; letter-spacing: 1px; margin-bottom: 8px; }
+.bsi-footer-link { font-size: 12px; color: #C8956C; text-decoration: none; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="bsi-hero">
+  <div class="bsi-star" style="top:15%;left:8%;width:6px;height:6px;"></div>
+  <div class="bsi-star" style="top:25%;left:15%;width:4px;height:4px;opacity:0.4;"></div>
+  <div class="bsi-star" style="top:10%;right:12%;width:7px;height:7px;opacity:0.6;"></div>
+  <div class="bsi-star" style="top:35%;right:8%;width:4px;height:4px;opacity:0.3;"></div>
+  <div class="bsi-star" style="top:60%;left:5%;width:5px;height:5px;opacity:0.4;"></div>
+  <div class="bsi-star" style="top:70%;right:6%;width:4px;height:4px;"></div>
+  <div class="bsi-star" style="top:80%;left:20%;width:3px;height:3px;opacity:0.3;"></div>
+  <div class="bsi-star" style="top:85%;right:18%;width:5px;height:5px;opacity:0.4;"></div>
+  <div class="bsi-logo-letters"><span>B</span>S</div>
+  <div class="bsi-brand-name">Bright Start</div>
+  <div class="bsi-brand-sub">Initiative</div>
+  <div class="bsi-hero-headline">You figured out how to learn. We'll help you figure out what comes next.</div>
+  <div class="bsi-hero-sub">Free workshops and personalized support for homeschool students navigating college and beyond — built by a homeschool graduate who knows what it's like to figure it out without a roadmap.</div>
+  <div class="bsi-btn-group">
+    <a href="https://cal.com/bright-start-xishd7/bright-start-workshop-registration" class="bsi-btn-primary">Book a free consultation</a>
+    <a href="https://www.notion.so/Volunteer-With-Bright-Start-Initiative-3393ee8859e5815683a5e3abfa6e2dc7" class="bsi-btn-secondary">Volunteer with us</a>
+  </div>
+</div>
+
+<div class="bsi-divider">
+  <div class="bsi-divider-line"></div>
+  <div class="bsi-divider-star">✦</div>
+  <div class="bsi-divider-line"></div>
+</div>
+
+<div class="bsi-section">
+  <div class="bsi-section-label">Who this is for</div>
+  <div class="bsi-section-title">The gap between having resources and knowing how to use them</div>
+  <div class="bsi-body">Most college prep resources were built for students with counselors, class ranks, and four years of strategic preparation. If you're homeschooled, you've probably sat in a workshop that didn't quite apply to you — spending more time translating the advice than absorbing it.</div>
+  <div class="bsi-body">For many homeschool students, college prep doesn't begin until senior year. The earlier years are just coursework — no one connecting the dots between what you're doing and where you're going. Bright Start Initiative was built specifically for students like you, by someone who was one.</div>
+</div>
+
+<div class="bsi-workshops">
+  <div class="bsi-workshops-inner">
+    <div class="bsi-section-label">Free workshops</div>
+    <div class="bsi-section-title">Topics built for your experience, not translated from someone else's</div>
+    <div class="bsi-workshop-grid">
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">College culture shock for homeschool students</div></div>
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">Building a network when you weren't in a traditional school</div></div>
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">How to find research opportunities nobody told you about</div></div>
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">FAFSA and financial aid as a homeschool graduate</div></div>
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">Dual enrollment: how to use it strategically</div></div>
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">How to build a college list without a counselor</div></div>
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">Extracurricular building for homeschool students</div></div>
+      <div class="bsi-workshop-item"><div class="bsi-workshop-dot"></div><div class="bsi-workshop-text">College essays vs. SAT — what actually matters for you</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="bsi-divider">
+  <div class="bsi-divider-line"></div>
+  <div class="bsi-divider-star">✦</div>
+  <div class="bsi-divider-line"></div>
+</div>
+
+<div class="bsi-section">
+  <div class="bsi-section-label">What we offer</div>
+  <div class="bsi-section-title">Two ways to get support</div>
+  <div class="bsi-offer-cards">
+    <div class="bsi-offer-card">
+      <div class="bsi-offer-card-title">Free group workshops</div>
+      <div class="bsi-offer-card-desc">Live sessions on topics that actually apply to homeschool students — no translation required. Held regularly throughout the year.</div>
+    </div>
+    <div class="bsi-offer-card">
+      <div class="bsi-offer-card-title">Free 1-on-1 consultation</div>
+      <div class="bsi-offer-card-desc">Book a free 15-minute call to talk through where you are in the process. No commitment, no cost — just real guidance from someone who's been there.</div>
+    </div>
+  </div>
+</div>
+
+<div class="bsi-about">
+  <div class="bsi-about-inner">
+    <div class="bsi-about-photo">A</div>
+    <div>
+      <div class="bsi-section-label">About Ashley</div>
+      <div class="bsi-body" style="margin-bottom:0;">Ashley is a homeschool graduate and first-year college student at Lamar University, where she conducts research on social capital differences between homeschool and elite preparatory school students. She founded Bright Start Initiative because she knows firsthand what it feels like to navigate college without a roadmap — and believes no student should have to figure it out alone.</div>
+    </div>
+  </div>
+</div>
+
+<div class="bsi-footer">
+  <div class="bsi-footer-text">Bright Start Initiative — est. 2026</div>
+  <a href="https://instagram.com/brightstartinitiative" class="bsi-footer-link">@brightstartinitiative</a>
+</div>
+</body>
+</html>
