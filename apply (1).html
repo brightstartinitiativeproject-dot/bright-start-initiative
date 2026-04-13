@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Apply — Bright Start Initiative</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --matcha: #4A5C2F;
+  --matcha-mid: #5E7340;
+  --matcha-light: #7A8F58;
+  --matcha-pale: #C8D4B0;
+  --cream: #F6F1E7;
+  --cream-dark: #EDE5D0;
+  --cream-darker: #DDD4BC;
+  --gold: #B07D3A;
+  --gold-light: #C99B5A;
+  --gold-pale: #E8D5B0;
+  --ink: #1C1E14;
+  --ink-soft: #353828;
+  --muted: #7A7868;
+  --white: #FDFAF3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 4rem;
+  background: rgba(246,241,231,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--cream-darker);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--matcha);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--matcha); }
+
+.nav-links .nav-cta {
+  background: var(--matcha);
+  color: var(--cream) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+
+.nav-links .nav-cta:hover { background: var(--matcha-mid) !important; color: var(--cream) !important; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-dark {
+  background: var(--matcha);
+  color: var(--white);
+}
+.btn-dark:hover { background: var(--matcha-mid); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--matcha);
+  border: 1.5px solid var(--matcha);
+}
+.btn-outline:hover { background: var(--matcha); color: var(--white); transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-full { width: 100%; text-align: center; display: block; }
+
+/* SECTION SHARED */
+.section-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--matcha);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--matcha-light);
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  padding: 3.5rem 4rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 2rem;
+}
+
+.footer-brand {}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cream);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.footer-tagline {
+  font-size: 0.75rem;
+  color: rgba(246,241,231,0.4);
+  letter-spacing: 0.06em;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-col {}
+.footer-nav-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.footer-nav-col a {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(246,241,231,0.5);
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+.footer-nav-col a:hover { color: var(--cream); }
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: rgba(246,241,231,0.25);
+  letter-spacing: 0.05em;
+}
+
+/* FORM STYLES */
+.form-group {
+  margin-bottom: 1.4rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--cream-darker);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--matcha-light);
+}
+
+.form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+.form-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+.form-success {
+  background: #EAF3DE;
+  border: 1px solid #C8D4B0;
+  color: #3B6D11;
+  padding: 1.2rem 1.5rem;
+  border-radius: 2px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  display: none;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.68rem; }
+  footer { padding: 3rem 1.5rem; }
+  .footer-inner { flex-direction: column; }
+}
+
+</style>
+<style>
+  .page-hero {
+    padding: 10rem 4rem 5rem;
+    background: var(--white);
+    border-bottom: 1px solid var(--cream-darker);
+  }
+
+  .page-hero-inner { max-width: 580px; }
+  .page-hero .section-title { margin: 0.8rem 0 1.2rem; }
+
+  .page-hero-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* MAIN LAYOUT */
+  .apply-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    min-height: 70vh;
+  }
+
+  .apply-sidebar {
+    background: var(--cream);
+    padding: 4rem;
+    border-right: 1px solid var(--cream-darker);
+    position: sticky;
+    top: 72px;
+    height: fit-content;
+  }
+
+  .sidebar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--matcha);
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+
+  .workshop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .workshop-item {
+    padding: 1rem 1.2rem;
+    background: var(--white);
+    border: 1px solid var(--cream-darker);
+    border-radius: 2px;
+    border-left: 3px solid var(--matcha-pale);
+  }
+
+  .workshop-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-bottom: 0.2rem;
+  }
+
+  .workshop-item-schedule {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .sidebar-note {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 1rem 1.2rem;
+    background: var(--cream-dark);
+    border-radius: 2px;
+  }
+
+  /* FORM SIDE */
+  .apply-form-side {
+    padding: 4rem;
+    background: var(--white);
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--matcha);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    cursor: pointer;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--matcha);
+    flex-shrink: 0;
+  }
+
+  .checkbox-label {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .page-hero { padding: 8rem 1.5rem 4rem; }
+    .apply-layout { grid-template-columns: 1fr; }
+    .apply-sidebar { position: static; padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--cream-darker); }
+    .apply-form-side { padding: 3rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Bright Start Initiative</a>
+  <ul class="nav-links">
+    <li><a href="index.html#workshops">Workshops</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="apply.html" class="nav-cta">Apply free</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-eyebrow">Student registration</span>
+    <h1 class="section-title">Join a free<br/><em>workshop.</em></h1>
+    <p class="page-hero-desc">All workshops are free and open to homeschool students at any stage of the college process. Fill out the form below and we'll reach out with session details.</p>
+  </div>
+</div>
+
+<div class="apply-layout">
+  <aside class="apply-sidebar">
+    <div class="sidebar-title">What's available</div>
+    <div class="workshop-list">
+      <div class="workshop-item">
+        <div class="workshop-item-name">Extracurricular Building for Homeschool Students</div>
+        <div class="workshop-item-schedule">Mon (Wk 1) · Wed (Wk 2)</div>
+      </div>
+      <div class="workshop-item">
+        <div class="workshop-item-name">College Application Essays Workshop</div>
+        <div class="workshop-item-schedule">Tue (Wk 1) · Thu (Wk 2)</div>
+      </div>
+      <div class="workshop-item">
+        <div class="workshop-item-name">Writing Your Story as a Non-Traditional Student</div>
+        <div class="workshop-item-schedule">Wed (Wk 1)</div>
+      </div>
+      <div class="workshop-item">
+        <div class="workshop-item-name">How to Build a College List Without a Counselor</div>
+        <div class="workshop-item-schedule">Thu (Wk 1) · Mon (Wk 2)</div>
+      </div>
+      <div class="workshop-item">
+        <div class="workshop-item-name">Building a Network When You Weren't in a Traditional School</div>
+        <div class="workshop-item-schedule">Tue (Wk 2)</div>
+      </div>
+    </div>
+    <div class="sidebar-note">All sessions are virtual. Once you register, you'll receive details about upcoming session dates and how to join.</div>
+  </aside>
+
+  <div class="apply-form-side">
+    <div class="form-title">Register for workshops</div>
+    <div class="form-sub">Takes about 3 minutes. All fields marked with * are required.</div>
+
+    <div id="formSuccess" class="form-success" style="margin-bottom:1.5rem;">
+      You're registered! We'll be in touch soon with upcoming session dates. Keep an eye on your inbox — and follow us on Instagram @brightstartinitiative for updates.
+    </div>
+
+    <form id="applyForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First name *</label>
+          <input type="text" class="form-input" id="afname" required placeholder="First name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last name *</label>
+          <input type="text" class="form-input" id="alnname" required placeholder="Last name"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email address *</label>
+        <input type="email" class="form-input" id="aemail" required placeholder="your@email.com"/>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">How old are you? *</label>
+        <select class="form-select" id="aage" required>
+          <option value="">Select...</option>
+          <option>Under 14</option>
+          <option>14–15</option>
+          <option>16–17</option>
+          <option>18–19</option>
+          <option>20 or older</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Where are you in the college process? *</label>
+        <select class="form-select" id="astage" required>
+          <option value="">Select...</option>
+          <option>Just starting to think about college</option>
+          <option>Researching schools and building my profile</option>
+          <option>Actively working on applications</option>
+          <option>Already applied, deciding between options</option>
+          <option>Currently in college, considering transfer</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Which workshops are you interested in? *</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="workshops" value="Extracurricular Building"/>
+            <span class="checkbox-label">Extracurricular Building for Homeschool Students</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="workshops" value="College Application Essays Workshop"/>
+            <span class="checkbox-label">College Application Essays Workshop</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="workshops" value="Writing Your Story"/>
+            <span class="checkbox-label">Writing Your Story as a Non-Traditional Student</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="workshops" value="Building a College List"/>
+            <span class="checkbox-label">How to Build a College List Without a Counselor</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="workshops" value="Building a Network"/>
+            <span class="checkbox-label">Building a Network When You Weren't in a Traditional School</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">General availability *</label>
+        <input type="text" class="form-input" id="aavail" required placeholder="e.g. Weekday evenings, Saturday mornings"/>
+        <div class="form-hint">Help us schedule sessions at times that work for most students.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">How did you hear about BSI? <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <select class="form-select" id="ahear">
+          <option value="">Select...</option>
+          <option>Instagram</option>
+          <option>Friend or family</option>
+          <option>Google search</option>
+          <option>Homeschool community / group</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Anything else you'd like us to know? <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea class="form-textarea" id="anotes" placeholder="Goals, questions, your situation — anything that helps us support you better."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-dark btn-full">Register for free</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Bright Start Initiative</span>
+      <span class="footer-tagline">est. 2026 · Educational equity for homeschool students</span>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-nav-col">
+        <span class="footer-nav-label">Programs</span>
+        <a href="index.html#workshops">Free workshops</a>
+        <a href="services.html">1-on-1 services</a>
+        <a href="apply.html">Apply / register</a>
+      </div>
+      <div class="footer-nav-col">
+        <span class="footer-nav-label">Get involved</span>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="https://instagram.com/brightstartinitiative">Instagram</a>
+        <a href="/cdn-cgi/l/email-protection#b2d0c0dbd5dac6c1c6d3c0c6dbdcdbc6dbd3c6dbc4d7c2c0ddd8d7d1c6f2d5dfd3dbde9cd1dddf">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-copy">© 2026 Bright Start Initiative. All rights reserved.</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const SUPABASE_URL = 'https://ubvgchabjuxqtggkhmhy.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVidmdjaGFianV4cXRnZ2tobWh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MzUyOTcsImV4cCI6MjA5MTUxMTI5N30.oiRUGvpmVe1bJ1fKxzWMO07DqSR-NMX4Lde_hmiEKqw';
+
+  document.getElementById('applyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type=submit]');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    const workshops = [...document.querySelectorAll('input[name="workshops"]:checked')].map(cb => cb.value);
+
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/student_applications`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          first_name: document.getElementById('afname').value,
+          last_name: document.getElementById('alnname').value,
+          email: document.getElementById('aemail').value,
+          age_range: document.getElementById('aage').value,
+          college_stage: document.getElementById('astage').value,
+          workshops_interested: workshops.join(', '),
+          availability: document.getElementById('aavail').value,
+          heard_from: document.getElementById('ahear').value,
+          notes: document.getElementById('anotes').value,
+          created_at: new Date().toISOString()
+        })
+      });
+
+      document.getElementById('formSuccess').style.display = 'block';
+      this.style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch(err) {
+      btn.textContent = 'Register for f
