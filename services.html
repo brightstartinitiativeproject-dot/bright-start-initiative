@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>1-on-1 Services — Bright Start Initiative</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --matcha: #4A5C2F;
+  --matcha-mid: #5E7340;
+  --matcha-light: #7A8F58;
+  --matcha-pale: #C8D4B0;
+  --cream: #F6F1E7;
+  --cream-dark: #EDE5D0;
+  --cream-darker: #DDD4BC;
+  --gold: #B07D3A;
+  --gold-light: #C99B5A;
+  --gold-pale: #E8D5B0;
+  --ink: #1C1E14;
+  --ink-soft: #353828;
+  --muted: #7A7868;
+  --white: #FDFAF3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 4rem;
+  background: rgba(246,241,231,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--cream-darker);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--matcha);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--matcha); }
+
+.nav-links .nav-cta {
+  background: var(--matcha);
+  color: var(--cream) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+
+.nav-links .nav-cta:hover { background: var(--matcha-mid) !important; color: var(--cream) !important; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-dark {
+  background: var(--matcha);
+  color: var(--white);
+}
+.btn-dark:hover { background: var(--matcha-mid); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--matcha);
+  border: 1.5px solid var(--matcha);
+}
+.btn-outline:hover { background: var(--matcha); color: var(--white); transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-full { width: 100%; text-align: center; display: block; }
+
+/* SECTION SHARED */
+.section-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--matcha);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--matcha-light);
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  padding: 3.5rem 4rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 2rem;
+}
+
+.footer-brand {}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cream);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.footer-tagline {
+  font-size: 0.75rem;
+  color: rgba(246,241,231,0.4);
+  letter-spacing: 0.06em;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-col {}
+.footer-nav-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.footer-nav-col a {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(246,241,231,0.5);
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+.footer-nav-col a:hover { color: var(--cream); }
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: rgba(246,241,231,0.25);
+  letter-spacing: 0.05em;
+}
+
+/* FORM STYLES */
+.form-group {
+  margin-bottom: 1.4rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--cream-darker);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--matcha-light);
+}
+
+.form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+.form-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+.form-success {
+  background: #EAF3DE;
+  border: 1px solid #C8D4B0;
+  color: #3B6D11;
+  padding: 1.2rem 1.5rem;
+  border-radius: 2px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  display: none;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.68rem; }
+  footer { padding: 3rem 1.5rem; }
+  .footer-inner { flex-direction: column; }
+}
+
+</style>
+<style>
+  .page-hero {
+    padding: 10rem 4rem 5rem;
+    background: var(--matcha);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(176,125,58,0.2) 0%, transparent 60%);
+  }
+
+  .page-hero-inner { position: relative; z-index: 2; max-width: 680px; }
+  .page-hero .section-eyebrow { color: var(--gold-pale); }
+  .page-hero .section-title { color: var(--cream); margin: 0.8rem 0 1.2rem; }
+
+  .page-hero-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(246,241,231,0.7);
+    line-height: 1.8;
+  }
+
+  /* TIER EXPLAINER */
+  .tier-explainer {
+    background: var(--cream-dark);
+    padding: 2rem 4rem;
+    border-bottom: 1px solid var(--cream-darker);
+  }
+
+  .tier-explainer-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .tier-explainer-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    padding-top: 0.2rem;
+  }
+
+  .tier-chips {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+
+  .tier-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .tier-chip-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .tier-chip-desc {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 220px;
+  }
+
+  /* SERVICES GRID */
+  .services-section {
+    padding: 6rem 4rem;
+    background: var(--white);
+  }
+
+  .services-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5px;
+    background: var(--cream-darker);
+    border: 1.5px solid var(--cream-darker);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.2rem;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: var(--cream); }
+
+  .service-duration {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--matcha);
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-prices {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .price-pill {
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    border: 1px solid;
+  }
+
+  .price-standard { background: var(--matcha-pale); border-color: var(--matcha-light); color: var(--matcha); }
+  .price-reduced { background: var(--gold-pale); border-color: var(--gold-light); color: var(--gold); }
+  .price-low { background: var(--cream-dark); border-color: var(--cream-darker); color: var(--muted); }
+
+  /* COACHING */
+  .coaching-section {
+    margin-bottom: 5rem;
+  }
+
+  .coaching-header { margin-bottom: 2rem; }
+  .coaching-header .section-title { font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
+
+  .coaching-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: var(--cream-darker);
+    border: 1.5px solid var(--cream-darker);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .coaching-card {
+    background: var(--white);
+    padding: 2.5rem;
+    position: relative;
+  }
+
+  .coaching-card:hover { background: var(--cream); }
+
+  .coaching-badge {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    margin-bottom: 1.2rem;
+  }
+
+  .badge-popular { background: var(--matcha-pale); color: var(--matcha); }
+  .badge-premium { background: var(--gold-pale); color: var(--gold); }
+
+  .coaching-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--matcha);
+    margin-bottom: 0.4rem;
+  }
+
+  .coaching-tagline {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .coaching-prices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    background: var(--cream);
+    border-radius: 2px;
+  }
+
+  .coaching-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+
+  .coaching-price-label { color: var(--muted); font-weight: 300; }
+  .coaching-price-val { font-weight: 500; color: var(--ink); }
+
+  .coaching-includes {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .coaching-includes span {
+    color: var(--matcha-light);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* SLOT BOOKING */
+  .booking-section {
+    background: var(--cream);
+    padding: 5rem 4rem;
+    border-top: 1px solid var(--cream-darker);
+  }
+
+  .booking-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .booking-left .section-title { font-size: clamp(1.6rem, 2.5vw, 2.4rem); margin: 0.8rem 0 1.2rem; }
+
+  .booking-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  /* TIER SELECTOR */
+  .tier-selector {
+    background: var(--white);
+    border: 1px solid var(--cream-darker);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .tier-selector-header {
+    padding: 1.5rem 1.8rem;
+    border-bottom: 1px solid var(--cream-darker);
+  }
+
+  .tier-selector-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--matcha);
+    margin-bottom: 0.3rem;
+  }
+
+  .tier-selector-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .tier-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tier-option {
+    padding: 1.5rem 1.8rem;
+    border-bottom: 1px solid var(--cream-darker);
+    cursor: pointer;
+    transition: background 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .tier-option:last-child { border-bottom: none; }
+  .tier-option:hover { background: var(--cream); }
+  .tier-option.unavailable { opacity: 0.5; cursor: not-allowed; }
+  .tier-option.unavailable:hover { background: transparent; }
+
+  .tier-radio {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--cream-darker);
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.15s;
+    position: relative;
+  }
+
+  .tier-option.selected .tier-radio {
+    border-color: var(--matcha);
+    background: var(--matcha);
+  }
+
+  .tier-option.selected .tier-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--white);
+  }
+
+  .tier-info { flex: 1; }
+
+  .tier-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3rem;
+  }
+
+  .tier-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .tier-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--matcha);
+  }
+
+  .tier-who {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .spots-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  .spots-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  .spots-open-style { background: rgba(94,115,64,0.12); color: var(--matcha); }
+  .spots-open-style .spots-dot { background: var(--matcha-light); }
+
+  .spots-limited-style { background: rgba(176,125,58,0.12); color: var(--gold); }
+  .spots-limited-style .spots-dot { background: var(--gold); }
+
+  .spots-full-style { background: rgba(180,80,60,0.1); color: #8B3A28; }
+  .spots-full-style .spots-dot { background: #C05A3A; }
+
+  .tier-selector-footer {
+    padding: 1.5rem 1.8rem;
+    border-top: 1px solid var(--cream-darker);
+    background: var(--cream);
+    display: none;
+  }
+
+  .tier-selector-footer.visible { display: block; }
+
+  .selected-summary {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .selected-summary strong { color: var(--ink); font-weight: 500; }
+
+  /* BOOKING FORM */
+  .booking-form-wrap {
+    background: var(--white);
+    border: 1px solid var(--cream-darker);
+    border-radius: 4px;
+    padding: 2rem 2rem;
+  }
+
+  .booking-form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--matcha);
+    margin-bottom: 0.3rem;
+  }
+
+  .booking-form-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .loading-slots {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+    padding: 1rem 0;
+  }
+
+  @media (max-width: 900px) {
+    .page-hero { padding: 8rem 1.5rem 4rem; }
+    .tier-explainer { padding: 1.5rem; }
+    .services-section { padding: 5rem 1.5rem; }
+    .coaching-grid { grid-template-columns: 1fr; }
+    .booking-section { padding: 5rem 1.5rem; }
+    .booking-inner { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Bright Start Initiative</a>
+  <ul class="nav-links">
+    <li><a href="index.html#workshops">Workshops</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="apply.html" class="nav-cta">Apply free</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-eyebrow">Paid 1-on-1 services</span>
+    <h1 class="section-title">Personal support,<br/><em>your pace.</em></h1>
+    <p class="page-hero-desc">For students who want focused, one-on-one guidance beyond our free workshops. All services use sliding scale pricing — choose the tier that honestly reflects your situation.</p>
+  </div>
+</section>
+
+<!-- TIER EXPLAINER STRIP -->
+<div class="tier-explainer">
+  <div class="tier-explainer-inner">
+    <span class="tier-explainer-label">Pricing tiers</span>
+    <div class="tier-chips">
+      <div class="tier-chip">
+        <span class="tier-chip-name">Standard</span>
+        <span class="tier-chip-desc">You're financially stable — employed, fully supported, no significant hardship.</span>
+      </div>
+      <div class="tier-chip">
+        <span class="tier-chip-name">Reduced</span>
+        <span class="tier-chip-desc">Money is tight — you're a student, part-time worker, or managing on a limited budget. Limited spots monthly.</span>
+      </div>
+      <div class="tier-chip">
+        <span class="tier-chip-name">Low-income</span>
+        <span class="tier-chip-desc">Genuine financial hardship — Pell Grant eligible or household income under $40k/year. Very limited spots monthly.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SINGLE SESSIONS -->
+<section class="services-section">
+  <div class="services-header">
+    <span class="section-eyebrow">Single sessions</span>
+    <h2 class="section-title">Choose your focus.</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-duration">45 min</div>
+      <div class="service-name">General Guidance</div>
+      <div class="service-desc">Not sure where to start? We'll map out your situation, identify gaps, and build a personalized action plan for your college journey.</div>
+      <div class="service-prices">
+        <span class="price-pill price-standard">$70 standard</span>
+        <span class="price-pill price-reduced">$45 reduced</span>
+        <span class="price-pill price-low">$25 low-income</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-duration">60 min</div>
+      <div class="service-name">Extracurricular Building</div>
+      <div class="service-desc">Build an extracurricular profile that tells your story — even without traditional clubs, sports, or school activities behind you.</div>
+      <div class="service-prices">
+        <span class="price-pill price-standard">$85 standard</span>
+        <span class="price-pill price-reduced">$55 reduced</span>
+        <span class="price-pill price-low">$30 low-income</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-duration">60 min</div>
+      <div class="service-name">Essay Writing</div>
+      <div class="service-desc">Craft a compelling college essay that embraces your non-traditional background as a strength, not something to explain away.</div>
+      <div class="service-prices">
+        <span class="price-pill price-standard">$85 standard</span>
+        <span class="price-pill price-reduced">$55 reduced</span>
+        <span class="price-pill price-low">$30 low-income</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-duration">45 min</div>
+      <div class="service-name">Scholarship Searching</div>
+      <div class="service-desc">Identify scholarships that actually fit your profile — including homeschool-specific and non-traditional student awards.</div>
+      <div class="service-prices">
+        <span class="price-pill price-standard">$70 standard</span>
+        <span class="price-pill price-reduced">$45 reduced</span>
+        <span class="price-pill price-low">$25 low-income</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-duration">45 min</div>
+      <div class="service-name">Interview Prep</div>
+      <div class="service-desc">Practice college and scholarship interviews with real feedback — learn how to talk about your homeschool experience with confidence.</div>
+      <div class="service-prices">
+        <span class="price-pill price-standard">$70 standard</span>
+        <span class="price-pill price-reduced">$45 reduced</span>
+        <span class="price-pill price-low">$25 low-income</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-duration">30 min</div>
+      <div class="service-name">Résumé & Activity List Review</div>
+      <div class="service-desc">Present your non-traditional experiences in a way admissions teams understand and value. Get a polished, strategic review.</div>
+      <div class="service-prices">
+        <span class="price-pill price-standard">$50 standard</span>
+        <span class="price-pill price-reduced">$32 reduced</span>
+        <span class="price-pill price-low">$18 low-income</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-duration">60 min</div>
+      <div class="service-name">Transfer Student Guidance</div>
+      <div class="service-desc">Navigating a college transfer as a homeschool graduate is its own challenge. Get guidance from someone who has done it.</div>
+      <div class="service-prices">
+        <span class="price-pill price-standard">$85 standard</span>
+        <span class="price-pill price-reduced">$55 reduced</span>
+        <span class="price-pill price-low">$30 low-income</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LONG-TERM COACHING -->
+  <div class="coaching-section">
+    <div class="coaching-header">
+      <span class="section-eyebrow">Long-term coaching</span>
+      <h2 class="section-title">Ongoing support,<br/><em>all year.</em></h2>
+    </div>
+    <div class="coaching-grid">
+      <div class="coaching-card">
+        <span class="coaching-badge badge-popular">Most popular</span>
+        <div class="coaching-name">Essentials Package</div>
+        <div class="coaching-tagline">2 sessions per month, any service mix. Ideal for students who need consistent check-ins without intensive support.</div>
+        <div class="coaching-prices">
+          <div class="coaching-price-row">
+            <span class="coaching-price-label">Standard</span>
+            <span class="coaching-price-val">$140 / month</span>
+          </div>
+          <div class="coaching-price-row">
+            <span class="coaching-price-label">Reduced</span>
+            <span class="coaching-price-val">$88 / month</span>
+          </div>
+          <div class="coaching-price-row">
+            <span class="coaching-price-label">Low-income</span>
+            <span class="coaching-price-val">$50 / month</span>
+          </div>
+        </div>
+        <div class="coaching-includes">
+          <span>Includes:</span>
+          2 sessions/month · Any service · Email follow-up between sessions
+        </div>
+      </div>
+      <div class="coaching-card">
+        <span class="coaching-badge badge-premium">Full support</span>
+        <div class="coaching-name">Full Support Package</div>
+        <div class="coaching-tagline">4 sessions per month, mix and match services. Best for students in the thick of applications who need intensive guidance.</div>
+        <div class="coaching-prices">
+          <div class="coaching-price-row">
+            <span class="coaching-price-label">Standard</span>
+            <span class="coaching-price-val">$240 / month</span>
+          </div>
+          <div class="coaching-price-row">
+            <span class="coaching-price-label">Reduced</span>
+            <span class="coaching-price-val">$150 / month</span>
+          </div>
+          <div class="coaching-price-row">
+            <span class="coaching-price-label">Low-income</span>
+            <span class="coaching-price-val">$85 / month</span>
+          </div>
+        </div>
+        <div class="coaching-includes">
+          <span>Includes:</span>
+          4 sessions/month · Any service mix · Priority scheduling · Email support between sessions
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING WITH LIVE SLOTS -->
+<section class="booking-section">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <span class="section-eyebrow">Book a session</span>
+      <h2 class="section-title">Ready to get<br/><em>started?</em></h2>
+      <p class="booking-desc">Select the pricing tier that honestly reflects your financial situation, then fill out the booking form. Reduced and low-income spots are limited each month and reset on the 1st.</p>
+
+      <!-- LIVE TIER SELECTOR -->
+      <div class="tier-selector">
+        <div class="tier-selector-header">
+          <div class="tier-selector-title">Select your tier</div>
+          <div class="tier-selector-sub">Spots reset on the 1st of each month</div>
+        </div>
+
+        <div class="tier-options" id="tierOptions">
+          <div class="loading-slots" style="padding: 1.5rem 1.8rem;">Loading availability...</div>
+        </div>
+
+        <div class="tier-selector-footer" id="tierFooter">
+          <div class="selected-summary" id="selectedSummary"></div>
+          <button class="btn btn-dark btn-full" onclick="scrollToForm()">Continue to booking form</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-form-wrap" id="bookingForm">
+      <div class="booking-form-title">Book a session</div>
+      <div class="booking-form-sub">We'll confirm your time and send details via email.</div>
+
+      <div id="formSuccess" class="form-success">
+        Your booking request has been submitted! Ashley will follow up within 48 hours to confirm your session time.
+      </div>
+
+      <form id="serviceForm">
+        <div class="form-group">
+          <label class="form-label">Full name</label>
+          <input type="text" class="form-input" id="fname" required placeholder="Your name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="femail" required placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service</label>
+          <select class="form-select" id="fservice" required>
+            <option value="">Select a service...</option>
+            <option>General Guidance (45 min)</option>
+            <option>Extracurricular Building (60 min)</option>
+            <option>Essay Writing (60 min)</option>
+            <option>Scholarship Searching (45 min)</option>
+            <option>Interview Prep (45 min)</option>
+            <option>Résumé & Activity List Review (30 min)</option>
+            <option>Transfer Student Guidance (60 min)</option>
+            <option>Essentials Coaching Package (monthly)</option>
+            <option>Full Support Coaching Package (monthly)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pricing tier</label>
+          <select class="form-select" id="ftier" required>
+            <option value="">Select tier...</option>
+            <option value="standard">Standard</option>
+            <option value="reduced">Reduced</option>
+            <option value="low-income">Low-income</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Availability</label>
+          <input type="text" class="form-input" id="favail" placeholder="e.g. Weekday evenings, Saturday mornings"/>
+          <div class="form-hint">Let us know your general availability so Ashley can suggest times.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Anything else? <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+          <textarea class="form-textarea" id="fnotes" placeholder="Goals, questions, or context about where you are in the process..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark btn-full">Submit booking request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Bright Start Initiative</span>
+      <span class="footer-tagline">est. 2026 · Educational equity for homeschool students</span>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-nav-col">
+        <span class="footer-nav-label">Programs</span>
+        <a href="index.html#workshops">Free workshops</a>
+        <a href="services.html">1-on-1 services</a>
+        <a href="apply.html">Apply / register</a>
+      </div>
+      <div class="footer-nav-col">
+        <span class="footer-nav-label">Get involved</span>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="https://instagram.com/brightstartinitiative">Instagram</a>
+        <a href="/cdn-cgi/l/email-protection#f496869d939c8087809586809d9a9d809d95809d829184869b9e919780b49399959d98da979b99">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-copy">© 2026 Bright Start Initiative. All rights reserved.</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const SUPABASE_URL = 'https://ubvgchabjuxqtggkhmhy.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_l53CJ7OW42vJZzTJmImasw_hwEwurdh';
+
+  // ── SLOT CONFIG ──────────────────────────────────────────────────────────────
+  const TIERS = [
+    {
+      id: 'standard',
+      label: 'Standard',
+      who: 'Financially stable — employed, fully supported, no significant hardship.',
+      priceRange: 'From $50 / session',
+      unlimited: true
+    },
+    {
+      id: 'reduced',
+      label: 'Reduced',
+      who: 'Money is tight — student, part-time worker, or managing on a limited budget.',
+      priceRange: 'From $32 / session',
+      unlimited: false,
+      totalSpots: 5
+    },
+    {
+      id: 'low-income',
+      label: 'Low-income',
+      who: 'Genuine financial hardship — Pell Grant eligible or household income under $40k/year.',
+      priceRange: 'From $18 / session',
+      unlimited: false,
+      totalSpots: 3
+    }
+  ];
+
+  let selectedTier = null;
+  let slotData = {};
+
+  async function loadSlots() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/slots?select=tier,used`, {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      if (!res.ok) {
+        console.warn('Supabase fetch failed, using defaults');
+        slotData = { reduced: 0, 'low-income': 0 };
+      } else {
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          data.forEach(row => { slotData[row.tier] = row.used; });
+        } else {
+          slotData = { reduced: 0, 'low-income': 0 };
+        }
+      }
+    } catch (e) {
+      console.warn('Slot load error:', e);
+      slotData = { reduced: 0, 'low-income': 0 };
+    }
+    renderTiers();
+  }
+
+  function getSpotsLeft(tier) {
+    if (tier.unlimited) return null;
+    return tier.totalSpots - (slotData[tier.id] || 0);
+  }
+
+  function getIndicatorHTML(tier) {
+    if (tier.unlimited) {
+      return `<span class="spots-indicator spots-open-style"><span class="spots-dot"></span>Always available</span>`;
+    }
+    const left = getSpotsLeft(tier);
+    if (left <= 0) {
+      return `<span class="spots-indicator spots-full-style"><span class="spots-dot"></span>Full this month</span>`;
+    }
+    if (left <= 2) {
+      return `<span class="spots-indicator spots-limited-style"><span class="spots-dot"></span>${left} spot${left === 1 ? '' : 's'} left this month</span>`;
+    }
+    return `<span class="spots-indicator spots-open-style"><span class="spots-dot"></span>${left} of ${tier.totalSpots} spots left</span>`;
+  }
+
+  function isAvailable(tier) {
+    if (tier.unlimited) return true;
+    return getSpotsLeft(tier) > 0;
+  }
+
+  function renderTiers() {
+    const container = document.getElementById('tierOptions');
+    container.innerHTML = TIERS.map(tier => {
+      const avail = isAvailable(tier);
+      return `
+        <div class="tier-option ${!avail ? 'unavailable' : ''}"
+             onclick="${avail ? `selectTier('${tier.id}')` : ''}"
+             id="tier-${tier.id}">
+          <div class="tier-radio"></div>
+          <div class="tier-info">
+            <div class="tier-row">
+              <span class="tier-label">${tier.label}</span>
+              <span class="tier-price">${tier.priceRange}</span>
+            </div>
+            <div class="tier-who">${tier.who}</div>
+            ${getIndicatorHTML(tier)}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function selectTier(id) {
+    selectedTier = id;
+    document.querySelectorAll('.tier-option').forEach(el => el.classList.remove('selected'));
+    document.getElementById(`tier-${id}`).classList.add('selected');
+
+    const tier = TIERS.find(t => t.id === id);
+    const footer = document.getElementById('tierFooter');
+    const summary = document.getElementById('selectedSummary');
+    footer.classList.add('visible');
+    summary.innerHTML = `You selected <strong>${tier.label}</strong> pricing (${tier.priceRange}). Fill out the booking form to the right and we'll confirm your session.`;
+
+    // Also update the form select
+    document.getElementById('ftier').value = id;
+  }
+
+  function scrollToForm() {
+    document.getElementById('bookingForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // FORM SUBMIT
+  document.getElementById('serviceForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type=submit]');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    const tier = document.getElementById('ftier').value;
+
+    try {
+      // Submit to Supabase bookings table
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/bookings`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          name: document.getElementById('fname').value,
+          email: document.getElementById('femail').value,
+          service: document.getElementById('fservice').value,
+          tier: tier,
+          availability: document.getElementById('favail').value,
+          notes: document.getElementById('fnotes').value,
+          created_at: new Date().toISOString()
+        })
+      });
+
+      // If non-standard tier, increment slot usage
+      if (tier !== 'standard' && res.ok) {
+        const current = slotData[tier] || 0;
+        await fetch(`${SUPABASE_URL}/rest/v1/slots?tier=eq.${tier}`, {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ used: current + 1 })
+        });
+        slotData[tier] = current + 1;
+        renderTiers();
+      }
+
+      document.getElementById('formSuccess').style.display = 'block';
+      this.style.display = 'none';
+    } catch(err) {
+      btn.textContent = 'Submit booking request';
+      btn.

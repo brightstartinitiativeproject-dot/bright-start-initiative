@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bright Start Initiative — Free College Guidance for Homeschool Students</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --matcha: #4A5C2F;
+  --matcha-mid: #5E7340;
+  --matcha-light: #7A8F58;
+  --matcha-pale: #C8D4B0;
+  --cream: #F6F1E7;
+  --cream-dark: #EDE5D0;
+  --cream-darker: #DDD4BC;
+  --gold: #B07D3A;
+  --gold-light: #C99B5A;
+  --gold-pale: #E8D5B0;
+  --ink: #1C1E14;
+  --ink-soft: #353828;
+  --muted: #7A7868;
+  --white: #FDFAF3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 4rem;
+  background: rgba(246,241,231,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--cream-darker);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--matcha);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--matcha); }
+
+.nav-links .nav-cta {
+  background: var(--matcha);
+  color: var(--cream) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+
+.nav-links .nav-cta:hover { background: var(--matcha-mid) !important; color: var(--cream) !important; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-dark {
+  background: var(--matcha);
+  color: var(--white);
+}
+.btn-dark:hover { background: var(--matcha-mid); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--matcha);
+  border: 1.5px solid var(--matcha);
+}
+.btn-outline:hover { background: var(--matcha); color: var(--white); transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-full { width: 100%; text-align: center; display: block; }
+
+/* SECTION SHARED */
+.section-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--matcha);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--matcha-light);
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  padding: 3.5rem 4rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 2rem;
+}
+
+.footer-brand {}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cream);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.footer-tagline {
+  font-size: 0.75rem;
+  color: rgba(246,241,231,0.4);
+  letter-spacing: 0.06em;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav-col {}
+.footer-nav-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.footer-nav-col a {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(246,241,231,0.5);
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+.footer-nav-col a:hover { color: var(--cream); }
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: rgba(246,241,231,0.25);
+  letter-spacing: 0.05em;
+}
+
+/* FORM STYLES */
+.form-group {
+  margin-bottom: 1.4rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--cream-darker);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--matcha-light);
+}
+
+.form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+.form-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+.form-success {
+  background: #EAF3DE;
+  border: 1px solid #C8D4B0;
+  color: #3B6D11;
+  padding: 1.2rem 1.5rem;
+  border-radius: 2px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  display: none;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.68rem; }
+  footer { padding: 3rem 1.5rem; }
+  .footer-inner { flex-direction: column; }
+}
+
+</style>
+<style>
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding-top: 72px;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 500;
+    line-height: 1.02;
+    color: var(--matcha);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.3s;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--matcha-light);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 420px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.5s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.7s;
+  }
+
+  .hero-right {
+    background: var(--matcha);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 4rem 3rem;
+  }
+
+  .hero-right-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(176,125,58,0.3) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 15%, rgba(122,143,88,0.25) 0%, transparent 50%);
+  }
+
+  .hero-texture {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, var(--cream) 0px, var(--cream) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, var(--cream) 0px, var(--cream) 1px, transparent 1px, transparent 40px);
+  }
+
+  .hero-right-content {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.9s;
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.4;
+    margin-bottom: 1.2rem;
+    border-left: 2px solid var(--gold-light);
+    padding-left: 1.5rem;
+  }
+
+  .hero-attr {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-pale);
+    padding-left: 1.5rem;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--matcha-light);
+    overflow: hidden;
+    padding: 0.75rem 0;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    gap: 0;
+    animation: ticker 30s linear infinite;
+  }
+
+  .ticker-item {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 0 3rem;
+  }
+
+  .ticker-dot {
+    color: var(--gold-pale);
+    opacity: 0.6;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* WORKSHOPS — MAIN FOCUS */
+  .workshops {
+    padding: 8rem 4rem;
+    background: var(--white);
+  }
+
+  .workshops-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 5rem;
+  }
+
+  .workshops-intro {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 1.5rem;
+  }
+
+  .workshops-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+
+  .workshops-stat {
+    text-align: right;
+  }
+
+  .workshops-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--matcha-pale);
+    line-height: 1;
+  }
+
+  .workshops-stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* SCHEDULE TABLE */
+  .schedule-wrap {
+    border: 1px solid var(--cream-darker);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+
+  .schedule-header {
+    display: grid;
+    grid-template-columns: 120px repeat(4, 1fr);
+    background: var(--matcha);
+  }
+
+  .schedule-header-cell {
+    padding: 1.1rem 1.5rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .schedule-header-cell:first-child {
+    border-right: 1px solid rgba(255,255,255,0.1);
+    color: var(--gold-pale);
+  }
+
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 120px repeat(4, 1fr);
+    border-top: 1px solid var(--cream-darker);
+  }
+
+  .schedule-row:nth-child(even) { background: var(--cream); }
+  .schedule-row:nth-child(odd) { background: var(--white); }
+
+  .schedule-week-cell {
+    padding: 1.3rem 1.5rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-right: 1px solid var(--cream-darker);
+    display: flex;
+    align-items: center;
+  }
+
+  .schedule-topic-cell {
+    padding: 1.3rem 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    border-right: 1px solid var(--cream-darker);
+  }
+
+  .schedule-topic-cell:last-child { border-right: none; }
+
+  .workshops-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 300;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .workshops-note a { color: var(--matcha); text-decoration: none; font-weight: 400; }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    padding: 7rem 4rem;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--matcha);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(176,125,58,0.25) 0%, transparent 60%);
+  }
+
+  .about-initial {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10rem;
+    font-weight: 500;
+    color: rgba(246,241,231,0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-frame-accent {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 100px;
+    height: 100px;
+    border: 1.5px solid var(--gold);
+    border-radius: 2px;
+  }
+
+  .about-text .section-title { margin: 0.8rem 0 1.5rem; }
+
+  .about-body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--matcha-light);
+    margin-top: 1.5rem;
+  }
+
+  /* SERVICES TEASER */
+  .services-teaser {
+    background: var(--matcha);
+    padding: 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .services-teaser::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(176,125,58,0.2) 0%, transparent 60%);
+  }
+
+  .services-teaser-inner { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+
+  .services-teaser .section-eyebrow { color: var(--gold-pale); }
+  .services-teaser .section-title { color: var(--cream); margin: 0.8rem 0 1.2rem; }
+
+  .services-teaser-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(246,241,231,0.65);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 280px; align-items: center; }
+    .hero-left { padding: 4rem 1.5rem 3rem; }
+    .workshops { padding: 5rem 1.5rem; }
+    .workshops-top { grid-template-columns: 1fr; gap: 2rem; }
+    .workshops-right { align-items: flex-start; }
+    .schedule-header, .schedule-row { grid-template-columns: 80px repeat(4, 1fr); }
+    .schedule-header-cell, .schedule-week-cell, .schedule-topic-cell { padding: 1rem 0.75rem; font-size: 0.75rem; }
+    .about-strip { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+    .services-teaser { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Bright Start Initiative</a>
+  <ul class="nav-links">
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="apply.html" class="nav-cta">Apply free</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="section-eyebrow fade-up" style="animation-delay:0.1s">Free · For homeschool students</span>
+    <h1 class="hero-headline">Your path<br/>is <em>different.</em><br/>Your future<br/>isn't.</h1>
+    <p class="hero-sub">Bright Start Initiative gives homeschool students the tools, guidance, and community to navigate college — the same resources traditional students have always had.</p>
+    <div class="hero-actions">
+      <a href="apply.html" class="btn btn-dark">Join a free workshop</a>
+      <a href="services.html" class="btn btn-outline">1-on-1 services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-right-content">
+      <p class="hero-quote">"Your start doesn't<br/>determine your story."</p>
+      <p class="hero-attr">— Ashley, Founder</p>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Free workshops <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Mon–Thu every week <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Homeschool students only <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">100% free, always <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Virtual sessions <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">College guidance <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Real support <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Free workshops <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Mon–Thu every week <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Homeschool students only <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">100% free, always <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Virtual sessions <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">College guidance <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Real support <span class="ticker-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- WORKSHOPS -->
+<section class="workshops" id="workshops">
+  <div class="workshops-top">
+    <div>
+      <span class="section-eyebrow">Weekly schedule</span>
+      <h2 class="section-title">Free workshops,<br/><em>every week.</em></h2>
+      <p class="workshops-intro">Five rotating topics, Monday through Thursday. All sessions are free, virtual, and open to homeschool students at any stage of the college process — whether you're just starting or putting finishing touches on applications.</p>
+    </div>
+    <div class="workshops-right">
+      <div class="workshops-stat">
+        <div class="workshops-stat-num">5</div>
+        <div class="workshops-stat-label">rotating topics</div>
+      </div>
+      <div class="workshops-stat">
+        <div class="workshops-stat-num">4×</div>
+        <div class="workshops-stat-label">per week, Mon–Thu</div>
+      </div>
+      <a href="apply.html" class="btn btn-dark">Register for a session</a>
+    </div>
+  </div>
+
+  <div class="schedule-wrap">
+    <div class="schedule-header">
+      <div class="schedule-header-cell">Week</div>
+      <div class="schedule-header-cell">Monday</div>
+      <div class="schedule-header-cell">Tuesday</div>
+      <div class="schedule-header-cell">Wednesday</div>
+      <div class="schedule-header-cell">Thursday</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-week-cell">Week 1</div>
+      <div class="schedule-topic-cell">Extracurricular Building for Homeschool Students</div>
+      <div class="schedule-topic-cell">College Application Essays Workshop</div>
+      <div class="schedule-topic-cell">Writing Your Story as a Non-Traditional Student</div>
+      <div class="schedule-topic-cell">How to Build a College List Without a Counselor</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-week-cell">Week 2</div>
+      <div class="schedule-topic-cell">How to Build a College List Without a Counselor</div>
+      <div class="schedule-topic-cell">Building a Network When You Weren't in a Traditional School</div>
+      <div class="schedule-topic-cell">Extracurricular Building for Homeschool Students</div>
+      <div class="schedule-topic-cell">College Application Essays Workshop</div>
+    </div>
+  </div>
+
+  <p class="workshops-note">All sessions are free and held virtually. Spots are limited per session. <a href="apply.html">Register here</a> to secure your spot and get notified of upcoming dates.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="about-visual">
+    <div class="about-frame">
+      <div class="about-initial">A</div>
+    </div>
+    <div class="about-frame-accent"></div>
+  </div>
+  <div class="about-text">
+    <span class="section-eyebrow">Meet the founder</span>
+    <h2 class="section-title">Hi, I'm <em>Ashley.</em></h2>
+    <p class="about-body">I'm a homeschool graduate and first-year college student at Lamar University, where I conduct research on social capital differences between homeschool and elite preparatory school students.</p>
+    <p class="about-body">I founded Bright Start Initiative because I know firsthand what it feels like to navigate college without a roadmap. I faced rejections from schools I had worked hard for — not because I wasn't capable, but because I didn't have access to the same resources and networks that traditional students did.</p>
+    <p class="about-body">BSI exists so that no homeschool student has to figure it out alone. Every workshop here is free — because access shouldn't depend on where you went to school.</p>
+    <div class="about-sig">— Ashley</div>
+  </div>
+</section>
+
+<!-- SERVICES TEASER -->
+<section class="services-teaser">
+  <div class="services-teaser-inner">
+    <span class="section-eyebrow">Paid 1-on-1 services</span>
+    <h2 class="section-title">Need deeper,<br/><em>personal</em> support?</h2>
+    <p class="services-teaser-desc">Beyond free workshops, BSI offers personalized 1-on-1 coaching sessions — essay writing, extracurricular strategy, interview prep, and more. Sliding scale pricing with three tiers so cost is never a barrier.</p>
+    <a href="services.html" class="btn btn-gold">View services & pricing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Bright Start Initiative</span>
+      <span class="footer-tagline">est. 2026 · Educational equity for homeschool students</span>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-nav-col">
+        <span class="footer-nav-label">Programs</span>
+        <a href="#workshops">Free workshops</a>
+        <a href="services.html">1-on-1 services</a>
+        <a href="apply.html">Apply / register</a>
+      </div>
+      <div class="footer-nav-col">
+        <span class="footer-nav-label">Get involved</span>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="https://instagram.com/brightstartinitiative">Instagram</a>
+        <a href="mailto:brightstartinitiativeproject@gmail.com">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-copy">© 2026 Bright Start Initiative. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
