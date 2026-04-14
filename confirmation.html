@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Booking Received — Bright Start Initiative</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --matcha: #4A5C2F;
+  --matcha-mid: #5E7340;
+  --matcha-light: #7A8F58;
+  --matcha-pale: #C8D4B0;
+  --cream: #F6F1E7;
+  --cream-dark: #EDE5D0;
+  --cream-darker: #DDD4BC;
+  --gold: #B07D3A;
+  --gold-light: #C99B5A;
+  --gold-pale: #E8D5B0;
+  --ink: #1C1E14;
+  --ink-soft: #353828;
+  --muted: #7A7868;
+  --white: #FDFAF3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 4rem;
+  background: rgba(246,241,231,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--cream-darker);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--matcha);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--matcha); }
+
+.nav-links .nav-cta {
+  background: var(--matcha);
+  color: var(--cream) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+}
+
+/* MAIN */
+.confirmation-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 5rem;
+}
+
+.confirmation-card {
+  background: var(--white);
+  border: 1px solid var(--cream-darker);
+  border-radius: 4px;
+  padding: 4rem;
+  max-width: 580px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.confirmation-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--matcha), var(--gold));
+}
+
+.check-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--matcha-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  animation: popIn 0.5s ease forwards;
+}
+
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.check-icon {
+  width: 28px;
+  height: 28px;
+  stroke: var(--matcha);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.confirm-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.8rem;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+  opacity: 0;
+}
+
+.confirm-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: var(--matcha);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease forwards 0.3s;
+  opacity: 0;
+}
+
+.confirm-title em {
+  font-style: italic;
+  color: var(--matcha-light);
+}
+
+.confirm-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--cream-darker);
+  margin: 0 auto 1.5rem;
+}
+
+.confirm-body {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.6s ease forwards 0.4s;
+  opacity: 0;
+}
+
+.confirm-body strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* STEPS */
+.confirm-steps {
+  background: var(--cream);
+  border-radius: 4px;
+  padding: 1.8rem;
+  margin: 2rem 0;
+  text-align: left;
+  animation: fadeUp 0.6s ease forwards 0.5s;
+  opacity: 0;
+}
+
+.confirm-steps-title {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.confirm-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.confirm-step:last-child { margin-bottom: 0; }
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--matcha-pale);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 1.8rem;
+}
+
+.step-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.step-text strong {
+  color: var(--ink);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+/* NOTE */
+.confirm-note {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s ease forwards 0.6s;
+  opacity: 0;
+}
+
+/* ACTIONS */
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s ease forwards 0.7s;
+  opacity: 0;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.btn-dark {
+  background: var(--matcha);
+  color: var(--white);
+}
+.btn-dark:hover { background: var(--matcha-mid); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--matcha);
+  border: 1.5px solid var(--matcha);
+}
+.btn-outline:hover { background: var(--matcha); color: var(--white); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  padding: 3rem 4rem;
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: rgba(246,241,231,0.25);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .confirmation-card { padding: 2.5rem 1.5rem; }
+  footer { padding: 2.5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Bright Start Initiative</a>
+  <ul class="nav-links">
+    <li><a href="index.html#workshops">Workshops</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="apply.html" class="nav-cta">Apply free</a></li>
+  </ul>
+</nav>
+
+<div class="confirmation-wrap">
+  <div class="confirmation-card">
+
+    <div class="check-circle">
+      <svg class="check-icon" viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <span class="confirm-eyebrow">Booking received</span>
+    <h1 class="confirm-title">Thank you for<br/>your <em>support.</em></h1>
+    <div class="confirm-divider"></div>
+
+    <p class="confirm-body">Your booking request has been received and Ashley will review it personally. We're so glad you're here — this is exactly what Bright Start Initiative is for.</p>
+
+    <div class="confirm-steps">
+      <div class="confirm-steps-title">What happens next</div>
+      <div class="confirm-step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Review & confirmation</strong>
+          Ashley will review your booking request and confirm your session details within 1–2 business days.
+        </div>
+      </div>
+      <div class="confirm-step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Payment link via email</strong>
+          You'll receive a secure Stripe payment link at the email you provided. Payment is required to finalize your session.
+        </div>
+      </div>
+      <div class="confirm-step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Session scheduled</strong>
+          Once payment is confirmed, Ashley will reach out to finalize your session time based on your availability.
+        </div>
+      </div>
+    </div>
+
+    <p class="confirm-note">Please check your inbox — including your spam folder — over the next 1–2 business days. If you haven't heard from us after that, reach out at <a href="mailto:brightstartinitiativeproject@gmail.com" style="color:var(--matcha);text-decoration:none;">brightstartinitiativeproject@gmail.com</a>.</p>
+
+    <div class="confirm-actions">
+      <a href="index.html" class="btn btn-dark">Back to home</a>
+      <a href="index.html#workshops" class="btn btn-outline">Browse free workshops</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Bright Start Initiative</span>
+    <span class="footer-copy">© 2026 Bright Start Initiative. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
